@@ -4,7 +4,7 @@ import Header from "./components/Header";
 import Wrapper from "./components/Wrapper";
 import "./App.scss";
 import Home from "./pages/Home";
-import Unit from "./pages/Unit";
+import Units from "./pages/Units";
 
 function App() {
   return (
@@ -13,7 +13,7 @@ function App() {
         <Header></Header>
         <Switch>
           <Route path="/" exact component={Home} />
-          <Route path="/units" exact component={Unit} />
+          <Route path="/units" exact component={Units} />
           {/* <Route path="/about" exact component={About} /> */}
           {/* <Route path="/posts/:id" exact component={Post} /> */}
           <Route path="/" render={() => <div>404</div>} />

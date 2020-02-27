@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 const data = {
   units: [
     {
@@ -401,7 +402,8 @@ const data = {
     {
       id: 21,
       name: "Petard",
-      description: "Demolition infantry unit armed with explosives. Bonuses add up - for example against walls and gates: +500 buildings +900 walls = +1400 bonus attack",
+      description:
+        "Demolition infantry unit armed with explosives. Bonuses add up - for example against walls and gates: +500 buildings +900 walls = +1400 bonus attack",
       expansion: "The Conquerors",
       age: "Castle",
       cost: {
@@ -420,7 +422,8 @@ const data = {
     {
       id: 22,
       name: "Trebuchet",
-      description: "Powerful siege weapon used to destroy buildings and walls from long distance. Cannot fire on close units. Must be packed to move and unpacked to attack. Can cut paths through forests. Unpack time: 0:11",
+      description:
+        "Powerful siege weapon used to destroy buildings and walls from long distance. Cannot fire on close units. Must be packed to move and unpacked to attack. Can cut paths through forests. Unpack time: 0:11",
       expansion: "Age of Kings",
       age: "Imperial",
       cost: {
@@ -441,7 +444,8 @@ const data = {
     {
       id: 23,
       name: "Trebuchet (packed)",
-      description: "Powerful siege weapon used to destroy buildings and walls from long distance. Cannot fire on close units. Must be packed to move and unpacked to attack. Can cut paths through forests. Unpack time: 0:11",
+      description:
+        "Powerful siege weapon used to destroy buildings and walls from long distance. Cannot fire on close units. Must be packed to move and unpacked to attack. Can cut paths through forests. Unpack time: 0:11",
       expansion: "Age of Kings",
       age: "Imperial",
       cost: {
@@ -501,7 +505,8 @@ const data = {
     {
       id: 26,
       name: "Demolition Ship",
-      description: "Filled with explosives. Self-destructs when used. Pilot near enemy ships and detonate to wrest control of the sea from an entrenched opponent",
+      description:
+        "Filled with explosives. Self-destructs when used. Pilot near enemy ships and detonate to wrest control of the sea from an entrenched opponent",
       expansion: "Age of Kings",
       age: "Castle",
       cost: {
@@ -644,7 +649,8 @@ const data = {
     {
       id: 33,
       name: "Longboat",
-      description: "Viking unique unit. Fires multiple arrows. volley of 4 arrows (7-1-1-1). Castle needed. Because of the multiple arrows the delay between starts of attacks is roughly 3.34",
+      description:
+        "Viking unique unit. Fires multiple arrows. volley of 4 arrows (7-1-1-1). Castle needed. Because of the multiple arrows the delay between starts of attacks is roughly 3.34",
       expansion: "Age of Kings",
       age: "Castle",
       cost: {
@@ -866,7 +872,8 @@ const data = {
     {
       id: 47,
       name: "Trade Cart",
-      description: "Used to trade with other players by land. Carries goods from your Market to another player's Market and brings back gold. The farther the Market the higher your profit",
+      description:
+        "Used to trade with other players by land. Carries goods from your Market to another player's Market and brings back gold. The farther the Market the higher your profit",
       expansion: "Age of Kings",
       age: "Feudal",
       cost: {
@@ -898,7 +905,8 @@ const data = {
     {
       id: 49,
       name: "Monk",
-      description: "Slow and weak. Converts enemy units and ships to your civilization (player color). Heals wounded villagers and military units (except siege weapons)",
+      description:
+        "Slow and weak. Converts enemy units and ships to your civilization (player color). Heals wounded villagers and military units (except siege weapons)",
       expansion: "Age of Kings",
       age: "Castle",
       cost: {
@@ -938,7 +946,8 @@ const data = {
     {
       id: 51,
       name: "Mangonel",
-      description: "Wheeled siege weapon used to attack a small mass of units. Area of effect attack. Can attack ground. Weak vs. close nonranged units",
+      description:
+        "Wheeled siege weapon used to attack a small mass of units. Area of effect attack. Can attack ground. Weak vs. close nonranged units",
       expansion: "Age of Kings",
       age: "Castle",
       cost: {
@@ -1365,7 +1374,8 @@ const data = {
     {
       id: 73,
       name: "Chu Ko Nu",
-      description: "Chinese unique unit. Archer with mediocre range. Shoots a volley of 2 extra arrows with 3 attack. Because of the multiple arrows the delay between starts of attacks is more (roughly 3.6)",
+      description:
+        "Chinese unique unit. Archer with mediocre range. Shoots a volley of 2 extra arrows with 3 attack. Because of the multiple arrows the delay between starts of attacks is more (roughly 3.6)",
       expansion: "Age of Kings",
       age: "Castle",
       cost: {
@@ -1409,7 +1419,8 @@ const data = {
     {
       id: 75,
       name: "Conquistador",
-      description: "Spanish unique unit. Mounted Hand Cannoneer. Powerful close attack but inaccurate at range. (Only archer armor upgrades apply from blacksmith not range or attack)",
+      description:
+        "Spanish unique unit. Mounted Hand Cannoneer. Powerful close attack but inaccurate at range. (Only archer armor upgrades apply from blacksmith not range or attack)",
       expansion: "Age of Kings",
       age: "Castle",
       cost: {
@@ -1453,7 +1464,8 @@ const data = {
     {
       id: 77,
       name: "Huskarl",
-      description: "Gothic unique unit. Infantry with substantial pierce armor; virtually immune to archer fire. Attack bonus vs. buildings and archers",
+      description:
+        "Gothic unique unit. Infantry with substantial pierce armor; virtually immune to archer fire. Attack bonus vs. buildings and archers",
       expansion: "Age of Kings",
       age: "Castle",
       cost: {
@@ -1786,7 +1798,8 @@ const data = {
     {
       id: 93,
       name: "Tarkan",
-      description: "Hun unique unit. Cavalry with attack bonus vs. buildings. (Attack bonuses stack - for example +16 against a palisade wall (8 buildings + 8 walls))",
+      description:
+        "Hun unique unit. Cavalry with attack bonus vs. buildings. (Attack bonuses stack - for example +16 against a palisade wall (8 buildings + 8 walls))",
       expansion: "The Conquerors",
       age: "Castle",
       cost: {
@@ -2025,25 +2038,31 @@ const data = {
     }
   ]
 };
-function Item(props) {
-  return <div>{/* <div>{unit}</div>
-      <div>{unit.id}</div> */}</div>;
-}
 
 function Unit() {
+  const history = useHistory();
+  const handleClick = () => {
+    history.push("/");
+  };
   return (
-    <div className="inner-wrapper">
+    <table className="table">
+      <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Age</th>
+      </tr>
       {data.units.map(unit => (
-        <>
-          <div>{unit.id}</div>
-          <div>{unit.name}</div>
-          <div>{unit.age}</div>
-          <div>
+        <tr onClick={handleClick}>
+          <td>{unit.id}</td>
+          <td>{unit.name}</td>
+          <td>{unit.age}</td>
+          <td>
             {unit.cost?.Wood} {unit.cost?.Food} {unit.cost?.Gold}
-          </div>
-        </>
+          </td>
+        </tr>
       ))}
-    </div>
+    </table>
   );
 }
 
