@@ -1,6 +1,8 @@
+* {
+  margin: 0;
+  font-family: "Segoe UI";
+}
 .wrapper {
-  display: flex;
-  flex-direction: column;
   background-color: #f9f9f9;
 }
 
@@ -9,9 +11,9 @@
   flex-direction: column;
   min-height: 100vh;
   width: 100vw;
-  box-shadow: 0 0 1px gray;
   max-width: 1100px;
   margin: auto;
+  box-shadow: 0 0 1px gray;
   background-color: #fff;
 }
 .app-header {
@@ -38,7 +40,7 @@
     color: rgba($color: #000000, $alpha: 0.8);
     padding: 15px;
     margin: 5px;
-    display: inline-block;
+    transition: background-color 400ms;
   }
   a:hover {
     background-color: darken(#fff, 3%);
@@ -48,9 +50,10 @@
     a {
       background-color: darken(#fff, 3%);
       border-radius: 4px;
+      transition: background-color 400ms;
     }
     a:hover {
-      background-color: darken(#fff, 3%);
+      background-color: darken(#fff, 2%);
       border-radius: 4px;
     }
   }
@@ -62,7 +65,6 @@
   font-size: 18px;
   color: rgba($color: tomato, $alpha: 0.7);
   padding: 20px;
-  display: inline-block;
 }
 
 .inner-wrapper {
@@ -74,8 +76,8 @@
   flex-direction: column;
 
   img {
-    margin: 10px 0;
-    width: 90%;
+    margin: auto;
+    width: 95%;
     height: 90%;
     object-fit: cover;
     border-radius: 5px;
@@ -102,10 +104,13 @@
     color: rgba($color: #000000, $alpha: 0.6);
     border-collapse: collapse;
   }
+  tr {
+    transition: background-color 200ms;
+  }
   tr:nth-child(even) {
     background-color: darken(#fff, 3%);
   }
   tr:hover {
-    background-color: darken(#fff, 1.5%);
+    background-color: darken(#fff, 5%);
   }
 }
