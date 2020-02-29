@@ -114,3 +114,21 @@
     background-color: darken(#fff, 5%);
   }
 }
+
+.slider {
+  width: 200px;
+  height: 40px;
+  display: flex;
+  .slider-disable {
+    display: flex;
+    height: 40px;
+    flex: 1;
+    background-color: lighten($color: tomato, $amount: 20%);
+  }
+  .slider-active {
+    display: flex;
+    height: 40px;
+    flex: 1;
+    background-color: tomato;
+  }
+}
