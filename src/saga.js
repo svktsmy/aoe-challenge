@@ -1,24 +1,23 @@
 import { takeLatest, put, delay } from "redux-saga/effects";
 
 function* getUnits(action) {
-  //   const ages = ["Imperial", "Castle", "Feudal", "Dark"];
-  //   const filteredAges = ages.splice(action.value.age);
-  //   console.log(filteredAges);
-  //  let filteredUnits = action.value.units.filter(x => filteredAges.includes(x.age));
-  let filteredUnits = action.value.units;
+  const ages = ["Dark", "Feudal", "Castle", "Imperial"];
+  const filteredAges = ages.filter((d, i) => i < action.value.age);
+
+  let filteredUnits = action.value.units.filter(x => filteredAges.includes(x.age));
 
   if (action.value.wood) {
-    filteredUnits = filteredUnits.filter(x => x.cost?.Wood >= action.value.wood.min);
-    filteredUnits = filteredUnits.filter(x => x.cost?.Wood <= action.value.wood.max);
+    if (action.value.wood.min) filteredUnits = filteredUnits.filter(x => x.cost?.Wood >= action.value.wood.min);
+    if (action.value.wood.max) filteredUnits = filteredUnits.filter(x => x.cost?.Wood <= action.value.wood.max);
   }
   if (action.value.food) {
-    filteredUnits = filteredUnits.filter(x => x.cost?.Food >= action.value.food.min);
-    filteredUnits = filteredUnits.filter(x => x.cost?.Food <= action.value.food.max);
+    if (action.value.food.min) filteredUnits = filteredUnits.filter(x => x.cost?.Food >= action.value.food.min);
+    if (action.value.food.max) filteredUnits = filteredUnits.filter(x => x.cost?.Food <= action.value.food.max);
   }
 
   if (action.value.gold) {
-    filteredUnits = filteredUnits.filter(x => x.cost?.Gold >= action.value.gold.min);
-    filteredUnits = filteredUnits.filter(x => x.cost?.Gold <= action.value.gold.max);
+    if (action.value.gold.min) filteredUnits = filteredUnits.filter(x => x.cost?.Gold >= action.value.gold.min);
+    if (action.value.gold.max) filteredUnits = filteredUnits.filter(x => x.cost?.Gold <= action.value.gold.max);
   }
 
   yield put({ type: "GET_UNITS_ASYNC", value: filteredUnits });

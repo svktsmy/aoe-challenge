@@ -84,17 +84,18 @@
     box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
   }
 }
-.table {
-  border-collapse: collapse;
-  margin: 10px;
-  margin-top: 80px;
-  border: 1px solid rgba(0, 0, 0, 0.07);
 
+.table-section {
+  border: 1px solid rgba(0, 0, 0, 0.07);
+  margin: 10px;
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
   th {
     font-weight: bold;
     text-align: center;
     padding: 10px;
-    border-collapse: collapse;
   }
   td {
     font-weight: 600;
@@ -102,7 +103,6 @@
     cursor: pointer;
     padding: 10px;
     color: rgba($color: #000000, $alpha: 0.6);
-    border-collapse: collapse;
   }
   tr {
     transition: background-color 200ms;
@@ -115,20 +115,56 @@
   }
 }
 
-.slider {
-  width: 200px;
-  height: 40px;
-  display: flex;
-  .slider-disable {
+.filter-section {
+  border: 1px solid rgba(0, 0, 0, 0.07);
+  margin: 10px;
+
+  .ages {
     display: flex;
-    height: 40px;
-    flex: 1;
-    background-color: lighten($color: tomato, $amount: 20%);
+    padding: 5px;
+
+    button {
+      background-color: tomato;
+      text-transform: uppercase;
+      border-radius: 5px;
+      margin: 2px;
+      padding: 15px;
+      text-decoration: none;
+      border: hidden;
+    }
+    .button-active {
+      background-color: greenyellow;
+    }
+    .button-all {
+      background-color: teal;
+      color: white;
+    }
   }
-  .slider-active {
+  .ranges {
     display: flex;
-    height: 40px;
-    flex: 1;
-    background-color: tomato;
+    flex-direction: column;
+
+    .range {
+      display: flex;
+      align-items: center;
+      padding: 5px;
+      label {
+        width: 70px;
+        text-align: center;
+        font-weight: 600;
+        color: rgba($color: #000000, $alpha: 0.8);
+      }
+      input {
+        margin: 2px 2px;
+        padding: 5px;
+        background-color: darken(#fff, 2%);
+        border: 1px solid rgba(0, 0, 0, 0.07);
+        border-radius: 3px;
+      }
+    }
   }
+}
+
+.spacer {
+  height: 80px;
 }
