@@ -5,6 +5,7 @@ import Wrapper from "./components/Wrapper";
 import "./App.scss";
 import Home from "./pages/Home";
 import Units from "./pages/Units";
+import Unit from "./pages/Unit";
 import { Provider } from "react-redux";
 import { createStore, applyMiddleware } from "redux";
 import reducer from "./store/reducer";
@@ -22,8 +23,7 @@ function App() {
           <Switch>
             <Route path="/" exact component={Home} />
             <Route path="/units" exact component={Units} />
-            {/* <Route path="/about" exact component={About} /> */}
-            {/* <Route path="/posts/:id" exact component={Post} /> */}
+            <Route path="/unit/:id" exact component={Unit} />
             <Route path="/" render={() => <div>404</div>} />
           </Switch>
         </BrowserRouter>

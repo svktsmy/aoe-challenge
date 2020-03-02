@@ -1,4 +1,4 @@
-import { takeLatest, put, delay } from "redux-saga/effects";
+import { takeLatest, put } from "redux-saga/effects";
 
 function* getUnits(action) {
   const ages = ["Dark", "Feudal", "Castle", "Imperial"];

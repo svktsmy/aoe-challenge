@@ -32,10 +32,10 @@ function Unit() {
   const [selectedWood, setSelectedWood] = useState(null);
   const [selectedGold, setSelectedGold] = useState(null);
   const [selectedFood, setSelectedFood] = useState(null);
-  const handleFilter = () => {
-    // history.push("/");
+
+  useEffect(() => {
     dispatch({ type: "GET_UNITS", value: { age: selectedAge, wood: selectedWood, gold: selectedGold, food: selectedFood, units } });
-  };
+  }, [selectedAge, selectedWood, selectedGold, selectedFood, units, dispatch]);
   const handleInputChange = event => {
     const target = event.target;
     const value = target.type === "checkbox" ? target.checked : target.value;
@@ -75,16 +75,16 @@ function Unit() {
       setSelectedFood(value ? {} : undefined);
     }
   };
-  useEffect(() => {
-    handleFilter();
-  }, [selectedAge, selectedWood, selectedGold, selectedFood]);
+
   return (
-    <React.Fragment>
+    <section data-testid="units-page">
       <Spacer></Spacer>
       <section className="filter-section">
         <div className="ages">
           {ages.map(d => (
             <button
+              key={d.value + "age"}
+              data-testid={d.label + "button"}
               onClick={() => {
                 setSelectedAge(d.value === 0 ? ages.length : d.value);
               }}
@@ -102,26 +102,34 @@ function Unit() {
       </section>
       <section className="table-section">
         <table>
-          <tr>
-            <th>Id</th>
-            <th>Name</th>
-            <th>Age</th>
-            <th>Cost</th>
-          </tr>
-          {filteredUnits.map(unit => (
-            <tr onClick={() => {}}>
-              <td>{unit.id}</td>
-              <td>{unit.name}</td>
-              <td>{unit.age}</td>
-              <td>
-                {unit.cost?.Wood ? `Wood:${unit.cost.Wood}` : null} {unit.cost?.Food ? `Food:${unit.cost.Food}` : null}{" "}
-                {unit.cost?.Gold ? `Gold:${unit.cost.Gold}` : null}
-              </td>
+          <thead>
+            <tr>
+              <th>Id</th>
+              <th>Name</th>
+              <th>Age</th>
+              <th>Cost</th>
             </tr>
-          ))}
+          </thead>
+          <tbody>
+            {filteredUnits.map(unit => (
+              <tr
+                key={unit.id}
+                onClick={() => {
+                  history.push(`/unit/${unit.id}`);
+                }}
+              >
+                <td>{unit.id}</td>
+                <td>{unit.name}</td>
+                <td data-testid="table-age">{unit.age}</td>
+                <td>
+                  {unit.cost?.Wood ? `Wood:${unit.cost.Wood}` : null} {unit.cost?.Food ? `Food:${unit.cost.Food}` : null} {unit.cost?.Gold ? `Gold:${unit.cost.Gold}` : null}
+                </td>
+              </tr>
+            ))}
+          </tbody>
         </table>
       </section>
-    </React.Fragment>
+    </section>
   );
 }
 function Range({ name, onChange, value }) {
@@ -129,22 +137,8 @@ function Range({ name, onChange, value }) {
     <div className="range">
       <input name={`${name.toLowerCase()}-enabled`} type="checkbox" onChange={onChange}></input>
       <label>{name}</label>
-      <input
-        name={`${name.toLowerCase()}-min`}
-        type="number"
-        value={value?.min || ""}
-        placeholder="min"
-        disabled={!value}
-        onChange={onChange}
-      ></input>
-      <input
-        name={`${name.toLowerCase()}-max`}
-        placeholder="max"
-        type="number"
-        value={value?.max || ""}
-        disabled={!value}
-        onChange={onChange}
-      ></input>
+      <input name={`${name.toLowerCase()}-min`} type="number" value={value?.min || ""} placeholder="min" disabled={!value} onChange={onChange}></input>
+      <input name={`${name.toLowerCase()}-max`} placeholder="max" type="number" value={value?.max || ""} disabled={!value} onChange={onChange}></input>
     </div>
   );
 }

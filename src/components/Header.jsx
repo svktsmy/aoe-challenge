@@ -4,14 +4,14 @@ import { Link, useLocation } from "react-router-dom";
 function Header() {
   const location = useLocation();
   return (
-    <header className="app-header">
-      <div class="app-header-logo">AoE Challenge</div>
-      <nav class="app-header-nav">
+    <header className="header">
+      <div className="header-logo">AoE Challenge</div>
+      <nav className="header-nav">
         <ul>
-          <li class={location.pathname === "/" ? "active" : undefined}>
+          <li className={location.pathname === "/" ? "active" : undefined}>
             <Link to="/">Home</Link>
           </li>
-          <li class={location.pathname === "/units" ? "active" : undefined}>
+          <li className={location.pathname === "/units" ? "active" : undefined}>
             <Link to="/units">Units</Link>
           </li>
         </ul>

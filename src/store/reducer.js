@@ -12,6 +12,8 @@ const reducer = (state = initialState, action) => {
     case "GET_UNITS_ASYNC":
       newState.filteredUnits = action.value;
       break;
+    default:
+      break;
   }
   return newState;
 };
