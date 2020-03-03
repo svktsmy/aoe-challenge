@@ -10,7 +10,7 @@ import { Provider } from "react-redux";
 import { createStore, applyMiddleware } from "redux";
 import reducer from "./store/reducer";
 import createSagaMiddleware from "redux-saga";
-import { watchUnits } from "./saga";
+import { watchUnits } from "./store/saga";
 const sagaMiddleware = createSagaMiddleware();
 const store = createStore(reducer, applyMiddleware(sagaMiddleware));
 sagaMiddleware.run(watchUnits);
