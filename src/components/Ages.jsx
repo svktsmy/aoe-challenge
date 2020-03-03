@@ -3,7 +3,7 @@ import React from "react";
 function Ages({ data, setData, selected }) {
   return data.map(d => (
     <button
-      key={d.value + "age"}
+      key={"age-" + d.value}
       data-testid={d.label + "-Button"}
       onClick={() => {
         setData(d.value === 0 ? data.length : d.value);

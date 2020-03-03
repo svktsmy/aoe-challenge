@@ -110,14 +110,22 @@ $secondary: tomato;
       justify-content: center;
     }
   }
-  tr {
-    transition: background-color 200ms;
+  tbody {
+    tr {
+      transition: background-color 200ms;
+    }
+    tr:nth-child(even) {
+      background-color: darken($primary, 3%);
+    }
+    tr:hover {
+      background-color: darken($primary, 5%);
+    }
   }
-  tr:nth-child(even) {
-    background-color: darken($primary, 3%);
-  }
-  tr:hover {
-    background-color: darken($primary, 5%);
+  thead {
+    tr {
+      background-color: darken($primary, 2%);
+      box-shadow: 0 2px 2px rgba($primary-opposite, 0.1);
+    }
   }
 }
 .filter-section {
